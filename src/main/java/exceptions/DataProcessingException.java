@@ -1,2 +1,7 @@
-package exceptions;public class DataProcessingException {
+package exceptions;
+
+public class DataProcessingException extends RuntimeException {
+    public DataProcessingException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }

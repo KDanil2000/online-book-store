@@ -1,7 +1,7 @@
 package repository.impl;
 
 import exceptions.DataProcessingException;
-import exceptions.EntityException;
+import exceptions.EntityNotFoundException;
 import java.util.List;
 import model.Book;
 import org.hibernate.Session;
@@ -32,7 +32,7 @@ public class BookRepositoryImpl implements BookRepository {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("FROM Book", Book.class).getResultList();
         } catch (Exception e) {
-            throw new EntityException("Can't get books from DB", e);
+            throw new EntityNotFoundException("Can't get books from DB", e);
         }
     }
 }

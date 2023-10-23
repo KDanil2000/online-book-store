@@ -3,6 +3,7 @@ package repository.impl;
 import exceptions.DataProcessingException;
 import exceptions.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 import model.Book;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -23,7 +24,7 @@ public class BookRepositoryImpl implements BookRepository {
             sessionFactory.inTransaction(sessionFactory -> sessionFactory.persist(book));
             return book;
         } catch (Exception e) {
-            throw new DataProcessingException("Can't save book in the DB, book: " + book, e);
+            throw new DataProcessingException("Can't save book to the DB, book: " + book, e);
         }
     }
 
@@ -32,7 +33,16 @@ public class BookRepositoryImpl implements BookRepository {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("FROM Book", Book.class).getResultList();
         } catch (Exception e) {
-            throw new EntityNotFoundException("Can't get books from DB", e);
+            throw new EntityNotFoundException("Can't get all books from DB", e);
+        }
+    }
+
+    @Override
+    public Optional<Book> findById(Long id) {
+        try (Session session = sessionFactory.openSession()) {
+            return Optional.ofNullable(session.get(Book.class, id));
+        } catch (Exception e) {
+            throw new EntityNotFoundException("Can't find book by id: " + id, e);
         }
     }
 }

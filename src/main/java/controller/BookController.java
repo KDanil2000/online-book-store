@@ -14,7 +14,7 @@ import service.BookService;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(value = "/api/books")
+@RequestMapping("/books")
 public class BookController {
     private final BookService bookService;
 

@@ -2,10 +2,13 @@ package controller;
 
 import dto.BookDto;
 import dto.CreateBookRequestDto;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import service.BookService;
 
+@Tag(name = "Book store API", description = "Endpoints for managing books")
 @RequiredArgsConstructor
 @RestController
 @Validated
@@ -28,30 +32,35 @@ public class BookController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
-    public List<BookDto> getAll() {
-        return bookService.findAll();
+    @Operation(summary = "Get all books", description = "Get list of books")
+    public List<BookDto> getAll(Pageable pageable) {
+        return bookService.findAll(pageable);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
+    @Operation(summary = "Get book by id", description = "Get book by book id")
     public BookDto getBookById(@PathVariable @Positive Long id) {
         return bookService.findById(id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
+    @Operation(summary = "Create a new book", description = "Create a new book")
     public BookDto createBook(@RequestBody @Valid CreateBookRequestDto bookDto) {
         return bookService.save(bookDto);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
+    @Operation(summary = "Delete book by id", description = "Delete book by book id")
     public void delete(@PathVariable @Positive Long id) {
         bookService.deleteById(id);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/{id}")
+    @Operation(summary = "Update book by id", description = "Update book by book id")
     public BookDto updateBookById(@PathVariable @Positive Long id,
                                   @RequestBody @Valid CreateBookRequestDto updateBookRequestDto) {
         return bookService.updateById(id, updateBookRequestDto);

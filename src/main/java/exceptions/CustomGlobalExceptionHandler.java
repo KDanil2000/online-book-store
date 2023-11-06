@@ -27,7 +27,6 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
         List<String> errors = ex.getBindingResult().getAllErrors().stream()
                 .map(this::getErrorMessage)
                 .toList();
-        body.put("status", HttpStatus.NOT_FOUND);
         body.put("errors", errors);
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
     }

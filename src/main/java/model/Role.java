@@ -15,6 +15,11 @@ import org.springframework.security.core.GrantedAuthority;
 @Entity
 @Table(name = "roles")
 public class Role implements GrantedAuthority {
+    public enum RoleName {
+        ROLE_ADMIN,
+        ROLE_USER
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

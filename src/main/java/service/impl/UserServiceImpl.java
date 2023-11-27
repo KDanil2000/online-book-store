@@ -7,7 +7,6 @@ import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import mapper.UserMapper;
 import model.Role;
-import model.RoleName;
 import model.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -38,6 +37,6 @@ public class UserServiceImpl implements UserService {
     }
 
     private Set<Role> getDefaultRoles() {
-        return Set.of(roleRepository.findByName(RoleName.ROLE_USER));
+        return Set.of(roleRepository.findByName(Role.RoleName.ROLE_USER));
     }
 }

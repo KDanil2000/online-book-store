@@ -34,7 +34,7 @@ import service.BookService;
 public class BookController {
     private final BookService bookService;
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+    @PreAuthorize("hasRole('USER')")
     @GetMapping
     @Operation(summary = "Get all books", description = "Get list of books")
     public List<BookDto> getAll(@ParameterObject @PageableDefault(sort = "id",
@@ -42,7 +42,7 @@ public class BookController {
         return bookService.findAll(pageable);
     }
 
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+    @PreAuthorize("hasRole('USER')")
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
     @Operation(summary = "Get book by id", description = "Get book by book id")
@@ -50,7 +50,7 @@ public class BookController {
         return bookService.findById(id);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     @Operation(summary = "Create a new book", description = "Create a new book")
@@ -58,7 +58,7 @@ public class BookController {
         return bookService.save(bookDto);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     @Operation(summary = "Delete book by id", description = "Delete book by book id")
@@ -66,7 +66,7 @@ public class BookController {
         bookService.deleteById(id);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ADMIN')")
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/{id}")
     @Operation(summary = "Update book by id", description = "Update book by book id")

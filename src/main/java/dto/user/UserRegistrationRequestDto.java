@@ -1,12 +1,13 @@
 package dto.user;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 public record UserRegistrationRequestDto(
-        @NotNull @Email
+        @NotBlank @Email
         String email,
         @NotNull @Size(min = 4, max = 32)
         @Pattern(
@@ -16,13 +17,13 @@ public record UserRegistrationRequestDto(
         String password,
         String verifyPassword,
 
-        @NotNull @Size(min = 2, max = 32)
+        @NotBlank @Size(min = 2, max = 32)
         String firstName,
 
-        @NotNull @Size(min = 2, max = 32)
+        @NotBlank @Size(min = 2, max = 32)
         String lastName,
 
-        @NotNull @Size(max = 128)
+        @NotBlank @Size(max = 128)
         String shippingAddress) {
 
 }

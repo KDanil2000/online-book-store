@@ -1,8 +1,11 @@
 package mapper;
 
 import dto.book.BookDto;
+import dto.book.BookDtoWithoutCategoryIds;
 import dto.book.CreateBookRequestDto;
 import model.Book;
+import model.Category;
+import org.mapstruct.AfterMapping;
 import org.mapstruct.BeanMapping;
 import org.mapstruct.InjectionStrategy;
 import org.mapstruct.Mapper;
@@ -21,4 +24,14 @@ public interface BookMapper {
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateBook(CreateBookRequestDto updatedRequestDto, @MappingTarget Book bookToUpdate);
+
+    BookDtoWithoutCategoryIds toDtoWithoutCategories(Book book);
+
+    @AfterMapping
+    default void setCategoryIds(@MappingTarget BookDto bookDto, Book book) {
+        bookDto.setCategoriesIds(book.getCategories()
+                .stream()
+                .map(Category::getId)
+                .toList());
+    }
 }

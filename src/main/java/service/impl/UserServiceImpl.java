@@ -9,7 +9,6 @@ import mapper.UserMapper;
 import model.Role;
 import model.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import repository.RoleRepository;
 import repository.UserRepository;
@@ -17,7 +16,6 @@ import service.UserService;
 
 @Service
 @RequiredArgsConstructor
-@Component
 public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final UserRepository userRepository;
@@ -28,7 +26,7 @@ public class UserServiceImpl implements UserService {
     public UserResponseDto register(UserRegistrationRequestDto request)
             throws RegistrationException {
         if (userRepository.findByEmail(request.email()).isPresent()) {
-            throw new RegistrationException("Registration failed");
+            throw new RegistrationException("User with this email already exists. Registration failed.");
         }
         User user = userMapper.toUser(request);
         user.setPassword(passwordEncoder.encode(request.password()));

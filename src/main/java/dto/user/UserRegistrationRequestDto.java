@@ -4,6 +4,11 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import security.validator.FieldMatch;
+
+@FieldMatch(message = "Password don`t equal",
+        field = "password",
+        fieldMatch = "verifyPassword")
 
 public record UserRegistrationRequestDto(
         @NotBlank @Email

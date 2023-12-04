@@ -20,7 +20,6 @@ public class Category {
     private String name;
 
     private String description;
-
     @Column(name = "is_deleted")
     private boolean isDeleted;
 }

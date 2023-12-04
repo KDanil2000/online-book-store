@@ -7,6 +7,7 @@ import java.util.Set;
 import lombok.RequiredArgsConstructor;
 import mapper.UserMapper;
 import model.Role;
+import model.ShoppingCart;
 import model.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -33,10 +34,17 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.toUser(request);
         user.setPassword(passwordEncoder.encode(request.password()));
         user.setRoles(getDefaultRoles());
+        createUserShoppingCart(user);
         return userMapper.toDto(userRepository.save(user));
     }
 
     private Set<Role> getDefaultRoles() {
         return Set.of(roleRepository.findByName(Role.RoleName.ROLE_USER));
+    }
+
+    private void createUserShoppingCart(User user) {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.setUser(user);
+        user.setShoppingCart(shoppingCart);
     }
 }

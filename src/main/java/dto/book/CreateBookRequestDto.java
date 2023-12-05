@@ -6,20 +6,21 @@ import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import java.math.BigDecimal;
+import java.util.List;
 
 public record CreateBookRequestDto(
-        @NotBlank
+        @NotBlank @Size(max = 255)
         String title,
-        @NotBlank
+        @NotBlank @Size(max = 255)
         String author,
         @Pattern(regexp = "^\\d{3}-\\d{10}$", message = "ISBN must have the format 123-1234567890")
         String isbn,
         @NotNull
         @Positive
         BigDecimal price,
-        @Size(max = 255)
+        @Size(max = 1024)
         String description,
-        @Size(max = 255)
-        String coverImage
-) {
+        @Size(max = 1024)
+        String coverImage,
+        List<Long> categoryIds){
 }

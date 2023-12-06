@@ -40,6 +40,8 @@ public class Book {
     private String description;
     private String coverImage;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToMany
     @JoinTable(
             name = "books_categories",
@@ -50,7 +52,7 @@ public class Book {
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "book")
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "book", orphanRemoval = true)
     private Set<CartItem> cartItems = new HashSet<>();
 
     @Column(nullable = false)

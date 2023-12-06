@@ -60,15 +60,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderItemResponseDto> getItemsByHisOrderId(Pageable pageable, Long orderId) {
+    public List<OrderItemResponseDto> getItemsByOrderId(Pageable pageable, Long orderId) {
         return orderItemRepository.findAllByOrderId(pageable, orderId).stream()
                 .map(orderItemMapper::toDto)
                 .toList();
     }
 
     @Override
-    public OrderItemResponseDto getItemByHisOrderIdAndItemId(Long orderId,
-                                                             Long itemId) {
+    public OrderItemResponseDto getItemByOrderIdAndItemId(Long orderId,
+                                                          Long itemId) {
         OrderItem orderItem = orderItemRepository.findByIdAndOrderId(itemId, orderId)
                 .orElseThrow(() -> new EntityNotFoundException(
                         "Cannot find item by id %d in order by id: %d".formatted(itemId, orderId))

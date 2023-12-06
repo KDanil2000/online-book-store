@@ -1,9 +1,9 @@
 package dto.orderitem;
 
 import jakarta.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.Length;
+import jakarta.validation.constraints.Size;
 
 public record OrderRequestDto(
-        @NotNull @Length(max = 255)
+        @NotNull @Size(max = 255)
         String shippingAddress) {
 }

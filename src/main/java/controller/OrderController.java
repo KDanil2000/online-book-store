@@ -68,7 +68,7 @@ public class OrderController {
             description = "Receive order items by order id")
     public List<OrderItemResponseDto> getItemsByOrderId(@PageableDefault Pageable pageable,
                                                         @PathVariable @Positive Long id) {
-        return orderService.getItemsByHisOrderId(pageable, id);
+        return orderService.getItemsByOrderId(pageable, id);
     }
 
     @PreAuthorize("hasRole('USER')")
@@ -77,6 +77,6 @@ public class OrderController {
             description = "Receive order item by order id and item id")
     public OrderItemResponseDto getItemByOrderAndItemId(@PathVariable @Positive Long orderId,
                                                         @PathVariable @Positive Long itemId) {
-        return orderService.getItemByHisOrderIdAndItemId(orderId, itemId);
+        return orderService.getItemByOrderIdAndItemId(orderId, itemId);
     }
 }

@@ -15,7 +15,6 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
         nullValueCheckStrategy = NullValueCheckStrategy.ALWAYS,
         implementationPackage = "<PACKAGE_NAME>.impl")
 public interface CategoryMapper {
-
     CategoryResponseDto toDto(Category category);
 
     Category toCategory(CategoryRequestDto categoryDto);

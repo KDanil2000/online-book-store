@@ -40,6 +40,8 @@ public class Book {
     private String description;
     private String coverImage;
 
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     @ManyToMany
     @JoinTable(
             name = "books_categories",

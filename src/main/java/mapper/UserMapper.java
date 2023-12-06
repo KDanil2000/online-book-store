@@ -22,5 +22,5 @@ public interface UserMapper {
     User toUser(UserRegistrationRequestDto requestDto);
 
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateUser(UserLoginRequestDto updatedRequestDto, @MappingTarget User bookToUpdate);
+    void updateUser(UserLoginRequestDto updatedRequestDto, @MappingTarget User userToUpdate);
 }

@@ -2,7 +2,7 @@
 
 ---
 ## 📝 Introduction
-This project is an online bookstore that allows the User to make purchases. The application is built in Java using such frameworks as Spring Boot and Hibernate. There are two roles: User and Admin. The User can: browse books, add books they like to a cart and order them. He also be able to register and log in. Admin be able to do all the same things as User, but also can change the status of the order, as well as update and delete resources.
+This project is an online bookstore that allows the User to make purchases. The application is built in Java using such frameworks as Spring Boot and Hibernate. There are two roles: User and Admin. The User can: browse books, add books they like to a cart and order them. User also able to register and log in. Admin be able to do all the same things as User, but also can change the status of the order, as well as update and delete resources.
 
 ---
 ## 🧑‍💻 Technologies Used

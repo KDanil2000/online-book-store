@@ -1,31 +1,29 @@
 # <h1 align="center">📚Online Bookstore📚</h1>
 
-
-`An application for ordering YOUR favourite books`
-
 ---
 ## 📝 Introduction
-`This project is an online bookstore that allows the User to make purchases. The application is built in Java using such frameworks as Spring Boot and Hibernate. There are two roles: User and Admin. The User can: browse books, add books they like to a cart and order them. He will also be able to register and log in. Admin will be able to do all the same things as User, but also can change the status of the order, as well as update and delete resources.`
+This project is an online bookstore that allows the User to make purchases. The application is built in Java using such frameworks as Spring Boot and Hibernate. There are two roles: User and Admin. The User can: browse books, add books they like to a cart and order them. He also be able to register and log in. Admin be able to do all the same things as User, but also can change the status of the order, as well as update and delete resources.
 
 ---
 ## 🧑‍💻 Technologies Used
 `The following technologies are used to build the 📚 application:`
-- ☕ **Java**
-- 🌱 **Spring Boot**
-- 🌱🛢️ **Spring Data JPA**
-- 🌱🛡️ **Spring Security**
-- 🗎  **Swagger**
-- 🐬 **MySQL**
-- 🌶️ **Lombok**
-- ↔️ **MapStruct**
+- Java 17
+- Spring Boot v 3.1.4
+- Spring Data JPA
+- Spring Security
+- Liquibase v4.20.0
+- Swagger
+- MySQL
+- Lombok
+- MapStruct
 ---
 ## 🛢️ Database structure:
-###### <h4 align="center"> ![Снимок экрана 2023-12-06 в 14.10.46.png](..%2F..%2FDesktop%2F%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202023-12-06%20%D0%B2%2014.10.46.png)</h4>
+###### <h4 align="center"> ![Database structure](https://github.com/KDanil2000/online-book-store/blob/hw-read-me/Ds.png)</h4>
 
 ---
-## **📃 API Endpoints**
+## **📃 API Documentation**
 
-### 🚨 **Authentication Controller**
+### 🚨 _Authentication Controller_
 
 | **HTTP method** |     **Endpoint**     | **Role** | **Function**                          |
 |:---------------:|:--------------------:|:--------:|:--------------------------------------|
@@ -34,7 +32,7 @@
 
 ---
 
-### 📖 **Book Controller**
+### 📖 _Book Controller_
 
 | **HTTP method** |   **Endpoint**    | **Role** | **Function**               |
 |:---------------:|:-----------------:|:--------:|:---------------------------|
@@ -46,7 +44,7 @@
 
 ---
 
-### 🔗 **Category Controller**
+### 🔗 _Category Controller_
 
 | **HTTP method** |         **Endpoint**         | **Role** | **Function**                   |
 |:---------------:|:----------------------------:|:--------:|:-------------------------------|
@@ -59,7 +57,7 @@
 
 
 ---
-### 🛒 **Shopping cart Controller**
+### 🛒 _Shopping cart Controller_
 
 | **HTTP method** |        **Endpoint**         | **Role** | **Function**                        |
 |:---------------:|:---------------------------:|:--------:|:------------------------------------|
@@ -69,7 +67,7 @@
 |     DELETE      | `/api/cart/cart-items/{id}` |   USER   | Delete cart item                    |
 
 ---
-### 📦 **Order Controller**
+### 📦 _Order Controller_
 
 | **HTTP method** |              **Endpoint**              | **Role** | **Function**                           |
 |:---------------:|:--------------------------------------:|:--------:|:---------------------------------------|
@@ -81,11 +79,7 @@
 
 ---
 
-## ❓ How to use
-
-`Before running the Booking app, ensure you have the following installed:`
-
-- ☕ Java Development Kit (JDK)
+## 🏁 How to run
 
 `Follow the steps below to install:`
 
